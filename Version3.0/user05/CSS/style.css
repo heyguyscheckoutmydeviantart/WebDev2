@@ -11,7 +11,7 @@ table {
 tr {
     border: 1px solid #ffffff;
     text-align: center;
-    background-color:#5387bb; 
+    background-color: #5387bb;
 }
 
 th {
@@ -19,7 +19,7 @@ th {
     color: #ffffff;
     background-color: #003366;
 }
+
 body {
     background-image: url();
-    'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTWTik7w-WJReSxco1QH0jvR9DWOiI-OMDHJz8G3KHBld8-J6z55fRh9t1sb0rb3wCFB5I&usqp=CAU'
 }
