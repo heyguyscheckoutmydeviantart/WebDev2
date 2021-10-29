@@ -45,10 +45,10 @@ body {
     margin: 0 auto;
     background-color: <?php 
     if($data->main->temp >=50){
-echo "blue";   
+echo "violet";   
  }
  if ($data->main->temp < 50){
-     echo "red";
+     echo "black";
  } ?>;
 }
 
