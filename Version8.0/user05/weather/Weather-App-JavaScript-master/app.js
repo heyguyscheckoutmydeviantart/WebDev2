@@ -12,39 +12,39 @@ const notificationElement = document.querySelector(".notification");
 const weather = {};
 
 weather.temperature = {
-    unit : "celsius"
+    unit: "celsius"
 }
 
 // APP CONSTS AND VARS
 const KELVIN = 273;
 // API KEY
-const key = "YOUR KEY HERE";
+const key = "0f15d607fd8c090ad1bd5fe084773b8e";
 var latitude = 44.7974;
 var longitude = -93.5273;
 
 // GET WEATHER FROM API PROVIDER
-function getWeather(latitude, longitude){
+function getWeather(latitude, longitude) {
     let api = `http://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${key}`;
-    
+
     fetch(api)
-        .then(function(response){
+        .then(function(response) {
             let data = response.json();
             return data;
         })
-        .then(function(data){
+        .then(function(data) {
             weather.temperature.value = Math.floor(data.main.temp - KELVIN);
             weather.description = data.weather[0].description;
             weather.iconId = data.weather[0].icon;
             weather.city = data.name;
             weather.country = data.sys.country;
         })
-        .then(function(){
+        .then(function() {
             displayWeather();
         });
 }
 
 // DISPLAY WEATHER TO UI
-function displayWeather(){
+function displayWeather() {
     iconElement.innerHTML = `<img src="icons/${weather.iconId}.png"/>`;
     tempElement.innerHTML = `${weather.temperature.value}°<span>C</span>`;
     descElement.innerHTML = weather.description;
@@ -52,21 +52,21 @@ function displayWeather(){
 }
 
 // C to F conversion
-function celsiusToFahrenheit(temperature){
-    return (temperature * 9/5) + 32;
+function celsiusToFahrenheit(temperature) {
+    return (temperature * 9 / 5) + 32;
 }
 
 // WHEN THE USER CLICKS ON THE TEMPERATURE ELEMENET
-tempElement.addEventListener("click", function(){
-    if(weather.temperature.value === undefined) return;
-    
-    if(weather.temperature.unit == "celsius"){
+tempElement.addEventListener("click", function() {
+    if (weather.temperature.value === undefined) return;
+
+    if (weather.temperature.unit == "celsius") {
         let fahrenheit = celsiusToFahrenheit(weather.temperature.value);
         fahrenheit = Math.floor(fahrenheit);
-        
+
         tempElement.innerHTML = `${fahrenheit}°<span>F</span>`;
         weather.temperature.unit = "fahrenheit";
-    }else{
+    } else {
         tempElement.innerHTML = `${weather.temperature.value}°<span>C</span>`;
         weather.temperature.unit = "celsius"
     }
