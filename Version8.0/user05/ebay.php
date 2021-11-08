@@ -1,3 +1,9 @@
+<script>
+function getRandomInt(max) {
+  return Math.floor(Math.random() * max);
+}
+
+</script>
 <?php
 error_reporting(E_ALL);  // Turn on all errors, warnings and notices for easier debugging
 
@@ -6,7 +12,7 @@ $endpoint = 'http://svcs.ebay.com/services/search/FindingService/v1';  // URL to
 $version = '1.0.0';  // API version supported by your application
 $appid = 'RobertMa-Shakopee-PRD-169ec6b8e-bb30ba02';  // Replace with your own AppID
 $globalid = 'EBAY-US';  // Global ID of the eBay site you want to search (e.g., EBAY-DE)
-$query = 'screwdrivers';  // You may want to supply your own query
+$query = 'unusual item';  // You may want to supply your own query
 $safequery = urlencode($query);  // Make the query URL-friendly
 $i = '0';  // Initialize the item filter index to 0
 // Create a PHP array of the item filters you want to use in your request
@@ -30,6 +36,7 @@ $filterarray =
   );
 
 // Generates an indexed URL snippet from the array of item filters
+
 function buildURLArray ($filterarray) {
   global $urlfilter;
   global $i;
@@ -57,6 +64,8 @@ function buildURLArray ($filterarray) {
 buildURLArray($filterarray);
 
 
+$number = rand(1, 50);
+
 // Construct the findItemsByKeywords HTTP GET call
 $apicall = "$endpoint?";
 $apicall .= "OPERATION-NAME=findItemsByKeywords";
@@ -73,16 +82,16 @@ $resp = simplexml_load_file($apicall);
 if ($resp->ack == "Success") {
   $results = '';
   // If the response was loaded, parse it and build links
-  foreach($resp->searchResult->item as $item) {
+  $resp->searchResult[$number] = $item;
     $pic   = $item->galleryURL;
     $link  = $item->viewItemURL;
     $title = $item->title;
 /////////////////////////EDIT THIS LINE/////////////////////////////////////////////////////
     // For each SearchResultItem node, build a link and append it to $results
-    $results .= "<tr><td><img src=\"$pic\"></td><td><a href=\"$link\">$title</a></td></tr>";
+    $results .= $item->galleryURL;
 ////////////////////////EDIT THIS LINE//////////////////////////////////////////////////////      
   }
-}
+
 // If the response does not indicate 'Success,' print an error
 else {
   $results  = "<h3>Oops! The request was not successful. Make sure you are using a valid ";
@@ -126,6 +135,8 @@ else {
         <tr>
             <td>
                 <?php echo $results;?>
+                
+                <?php echo getType($item);?>
             </td>
         </tr>
     </table>
