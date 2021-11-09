@@ -20,6 +20,29 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js "></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js "></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js "></script>
+    <!-- the DIV that will contain the widget -->
+<div class="weatherWidget " ></div>
+
+<script>
+   window.weatherWidgetConfig =  window.weatherWidgetConfig || [];
+   window.weatherWidgetConfig.push({
+       selector:".weatherWidget ",
+       apiKey:"P9FKP9UPKBSTN5QM4XYZDACXT ",
+       location:"Shakopee MN ", 
+       unitGroup:"metric ", 
+       forecastDays:1, 
+       title:"Shakopee MN ",  
+       showTitle:true, 
+       showConditions:true
+   });
+  
+   (function() {
+   var d = document, s = d.createElement('script');
+   s.src = 'https://www.visualcrossing.com/widgets/forecast-simple/weather-forecast-widget-simple.js';
+   s.setAttribute('data-timestamp', +new Date());
+   (d.head || d.body).appendChild(s);
+   })();
+</script>
     <style>
         body {
             margin: 0;
@@ -53,14 +76,18 @@
         .textboxHome {
             margin: 15px;
         }
-        
+        .Warninghome {
+    color: red;
+    font-size: 36px;
+    margin: 15px;
+}
 
     </style>
 </head>
 
 <body>
     <nav class="topnav ">
-        <a class="active " href="index.html ">Grocery Mart</a>
+        <a class="active " href="homepage.html ">Grocery Mart</a>
         <a href="news.html ">News</a>
         <a href="warnings.html ">Deals</a>
     </nav>
@@ -128,5 +155,6 @@
             target="_blank ">Grocery mart</a>
     </div>
 </footer>
+
 
 </html>

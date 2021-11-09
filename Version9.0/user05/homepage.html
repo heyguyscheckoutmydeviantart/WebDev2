@@ -7,8 +7,7 @@
 
 <head>
     <title>Grocery Mart</title>
-    <link rel="shortcut icon" href="CSS/favicon.ico">
-    <meta name="viewport content=" width=device-width, initial-scale=1 ">
+    <link rel="shortcut icon" href="Images/favicon copy.ico" <meta name="viewport content=" width=device-width, initial-scale=1 ">
     <meta charset="utf-8 ">
     <meta http-equiv="X-UA-Compatible " content="IE=edge ">
     <meta name="viewport " content="width=device-width, initial-scale=1, shrink-to-fit=no ">
@@ -20,7 +19,17 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js "></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js "></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js "></script>
-    <style>
+    <!-- the DIV that will contain the widget -->
+<div class="weatherWidget " ></div>
+<script>
+    alert('welcome to grocery mart');
+</script>
+<a class="weatherwidget-io " href="https://forecast7.com/en/44d80n93d53/shakopee/ " data-label_1="SHAKOPEE " data-label_2="WEATHER " data-theme="original " >SHAKOPEE WEATHER</a>
+<script>
+!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src='https://weatherwidget.io/js/widget.min.js';fjs.parentNode.insertBefore(js,fjs);}}(document,'script','weatherwidget-io-js');
+</script>
+   <style>
+
         body {
             margin: 0;
             font-family: Arial, Helvetica, sans-serif;
@@ -53,14 +62,18 @@
         .textboxHome {
             margin: 15px;
         }
-        
+        .Warninghome {
+    color: red;
+    font-size: 36px;
+    margin: 15px;
+}
 
     </style>
 </head>
 
 <body>
     <nav class="topnav ">
-        <a class="active " href="index.html ">Grocery Mart</a>
+        <a class="active " href="homepage.html ">Grocery Mart</a>
         <a href="news.html ">News</a>
         <a href="warnings.html ">Deals</a>
     </nav>
@@ -76,9 +89,10 @@
 
 
     <p class="Warninghome ">
-        Warning ecoli outbreak in grocery mart brand letttuce for more infromation please look <a href="news.html "> here</a>
+        Warning about grocery mart lemons click <a href="news.html "> here</a>
     </p>
 </main>
+
 <footer class="page-footer font-small blue pt-4 ">
 
 
@@ -128,5 +142,6 @@
             target="_blank ">Grocery mart</a>
     </div>
 </footer>
+
 
 </html>
